@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import model.excecao.ExcecaoDominio;
+
 public class Reserva {
 	
 	private Integer numeroDoQuarto;
@@ -16,8 +18,10 @@ public class Reserva {
 		
 	}
 	
-	public Reserva(Integer numeroDoQuarto, Date dataEntrada, Date dataSaida) {
-		
+	public Reserva(Integer numeroDoQuarto, Date dataEntrada, Date dataSaida)throws ExcecaoDominio {
+		if(!dataSaida.after(dataEntrada)) {
+			throw new ExcecaoDominio("Erro ao fazer a reserva: Data de saída menor que a data de entrada, tente novamente");
+		}
 		this.numeroDoQuarto = numeroDoQuarto;
 		this.dataEntrada = dataEntrada;
 		this.dataSaida = dataSaida;
@@ -52,18 +56,18 @@ public class Reserva {
 		return TimeUnit.DAYS.convert(dif,TimeUnit.MILLISECONDS);
 	}
 	
-	public String atualizarReserva(Date entrada, Date saida) {
+	public void atualizarReserva(Date entrada, Date saida) throws ExcecaoDominio{
 		Date agora = new Date();
 		if(entrada.before(agora)|| saida.before(agora)) {
-			return "Erro com atualização: Datas devem ser futuras";
+			throw new ExcecaoDominio ("Erro com atualização: Datas devem ser futuras");
 		}
 		if(!saida.after(entrada)) {
-			return "Erro ao fazer a reserva: Data de saída menor que a data de entrada, tente novamente";
+			throw new ExcecaoDominio("Erro ao fazer a reserva: Data de saída menor que a data de entrada, tente novamente");
 		}
 		
 		this.dataEntrada = entrada;
 		this.dataSaida = saida;
-		return null;
+		
 	}
 	
 	@Override
