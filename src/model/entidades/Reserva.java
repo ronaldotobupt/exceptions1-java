@@ -63,7 +63,7 @@ public class Reserva {
 				numeroDoQuarto +
 				", Entrada:  "+
 				sdf.format(dataEntrada)+
-				", data de saida: "+
+				", data de saida:  "+
 				sdf.format(dataSaida)+
 				", "+
 				duracao()+

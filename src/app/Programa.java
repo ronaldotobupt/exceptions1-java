@@ -42,7 +42,7 @@ public class Programa {
 				System.out.println("Erro com atualização: Datas devem ser futuras");
 			}
 			else if(!dataSaida.after(dataEntrada)) {
-				System.out.println("Erro ao fazer a reserva: Data de saída menor que a data de entrada");
+				System.out.println("Erro ao fazer a reserva: Data de saída menor que a data de entrada, tente novamente");
 			}
 			else {
 						
