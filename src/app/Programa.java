@@ -36,24 +36,20 @@ public class Programa {
 			System.out.print("Data de saída (dd/MM/yyy): ");
 			dataSaida = sdf.parse(sc.next());
 			
-			Date agora = new Date();
-			
-			if(dataEntrada.before(agora)|| dataSaida.before(agora)) {
-				System.out.println("Erro com atualização: Datas devem ser futuras");
-			}
-			else if(!dataSaida.after(dataEntrada)) {
-				System.out.println("Erro ao fazer a reserva: Data de saída menor que a data de entrada, tente novamente");
-			}
-			else {
-						
-			reserva.atualizarReserva(dataEntrada, dataSaida);
+			String error = reserva.atualizarReserva(dataEntrada, dataSaida);
+			if(error != null) {
+				System.out.println("Erro ao atualizar a reserva: " + error);
+			}else {
 			System.out.println("Reserva: "+ reserva);
 			}
-		}
-		
+			}
 		
 		sc.close();
+		}
+		
+	
+		
 
 	}
 
-}
+
