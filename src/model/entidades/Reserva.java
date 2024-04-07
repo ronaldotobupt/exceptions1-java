@@ -61,7 +61,7 @@ public class Reserva {
 	public String toString() {
 		return "Quarto "+
 				numeroDoQuarto +
-				", Entrada: "+
+				", Entrada:  "+
 				sdf.format(dataEntrada)+
 				", data de saida: "+
 				sdf.format(dataSaida)+

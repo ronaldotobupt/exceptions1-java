@@ -39,7 +39,7 @@ public class Programa {
 			Date agora = new Date();
 			
 			if(dataEntrada.before(agora)|| dataSaida.before(agora)) {
-				System.out.println("Erro na atualização: Datas devem ser futuras");
+				System.out.println("Erro com atualização: Datas devem ser futuras");
 			}
 			else if(!dataSaida.after(dataEntrada)) {
 				System.out.println("Erro ao fazer a reserva: Data de saída menor que a data de entrada");
